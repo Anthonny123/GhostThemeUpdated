@@ -1,0 +1,90 @@
+{{!< default}} 
+<div class="container m-auto mt-8">
+<div class="flex flex-col space-y-8 m-4">
+    <div class="border rounded-lg p-8">
+        <h1 class="text-center opacity-90 text-6xl font-semibold mb-16">{{@custom.donate_title}}</h1>
+        <p class="opacity-80 mb-8">{{@custom.donate_description}}</p>
+    </div>
+    {{#if @custom.enable_xmr_donation}}
+    <div class="border rounded-lg p-8">
+        <h1 class="opacity-90 text-6xl font-semibold mb-4">Contribute with Monero</h1>
+        <ul class="opacity-80 mb-4">
+            <li>
+                <span>1. Choose the amount of XMR you wish to contribute to this proposal</span>
+            </li>
+            <li>
+                <span>2. Scan this QR code or tap to open in your Monero wallet app:</span>
+            </li>
+        </ul>
+        <div class="flex my-8">
+            <a class="w-auto" href="monero:{{@custom.xmr_address}}">
+                <div class="flex" id="xmr_address"></div>
+            </a>
+        </div>
+        
+        <h4 class="opacity-90 text-3xl font-semibold mb-4">OR</h4>
+        <div class="mb-4 bg-gray-100 p-8 rounded-lg">
+            <p class="break-words">{{@custom.xmr_address}}</p>
+        </div>
+        <p class="mb-4 opacity-80">Enter the following XMR address:</p>
+        <p class="mb-8 opacity-80">3. Send! Thank you!.</p>
+        <p class="text-sm opacity-80">Your contribution should be visible within 5 minutes of you sending your contribution. If for some reason it is not there, please contact a member of the Core Team!</p>
+    </div>
+    {{/if}}
+    {{#if @custom.enable_btc_donation}}
+    <div class="border rounded-lg p-8">
+        <h1 class="opacity-90 text-6xl font-semibold mb-4">Contribute with BTC</h1>
+        <ul class="opacity-80 mb-4">
+            <li>
+                <span>1. Choose the amount of BTC you wish to contribute to this proposal</span>
+            </li>
+            <li>
+                <span>2. Scan this QR code or tap to open in your Monero wallet app:</span>
+            </li>
+        </ul>
+        <hr class="mb-4">
+        <h2 class="opacity-90 text-4xl font-semibold mb-4">BTC Network</h2>
+        <div class="flex my-8">
+            <a class="w-auto" href="monero:{{@custom.btc_address}}">
+                <div class="flex" id="btc_address"></div>
+            </a>
+        </div>
+        <h4 class="opacity-90 text-3xl font-semibold mb-4">OR</h4>
+        <p class="mb-4 opacity-80">Enter the following BTC address:</p>
+        <div class="mb-4 bg-gray-100 p-8 rounded-lg">
+            <p class="break-words">{{@custom.btc_address}}</p>
+        </div>
+        <p class="mb-8 opacity-80">3. Send! Thank you!.</p>
+        <hr class="mb-4">
+        <h2 class="opacity-90 text-4xl font-semibold mb-4">BTC Lightning Network</h2>
+        <div class="flex my-8">
+            <a class="w-auto" href="monero:{{@custom.btc_address_lightning}}">
+                <div class="flex" id="btc_address_lightning"></div>
+            </a>
+        </div>
+        <h4 class="opacity-90 text-3xl font-semibold mb-4">OR</h4>
+        <p class="mb-4 opacity-80">Enter the following BTC address:</p>
+        <div class="mb-4 bg-gray-100 p-8 rounded-lg">
+            <p class="break-words">{{@custom.btc_address_lightning}}</p>
+        </div>
+        <p class="mb-8 opacity-80">3. Send! Thank you!.</p>
+        <p class="text-sm opacity-80">Your contribution should be visible within 5 minutes of you sending your contribution. If for some reason it is not there, please contact a member of the Core Team!</p>
+    </div>
+    {{/if}}
+</div>
+</div>
+    {{#contentFor "scripts"}}
+    <script>
+        $(document).ready(function () {
+            {{#if @custom.enable_xmr_donation}}
+            new QRCode(document.getElementById("xmr_address"), "{{@custom.xmr_address}}");
+            {{/if}}
+            {{#if @custom.enable_btc_donation}}
+            new QRCode(document.getElementById("btc_address"), "{{@custom.btc_address}}");
+            new QRCode(document.getElementById("btc_address_lightning"), "{{@custom.btc_address_lightning}}");
+            {{/if}}
+        })
+
+
+    </script>
+    {{/contentFor}}

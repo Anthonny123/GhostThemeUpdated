@@ -1,0 +1,69 @@
+{{!< default}} <div class="it-page">
+    <div class="it-container">
+        <div class="featured-wrapper">
+            
+            {{> "featured"}}
+        </div>
+        <div class="md:flex items-stretch md:space-x-8 mt-20">
+            {{#get "posts" include="tags,authors" limit="1"}}
+             {{#foreach posts}}
+            <a href="{{url}}" class="hidden md:flex md:flex-col md:grow justify-end space-y-10 border rounded p-24 overflow-hidden bg-black bg-cover !text-white !no-underline" {{#if feature_image}} style="background-image: url({{feature_image}});" {{/if}}>
+                    <h3 class="mb-3 text-5xl font-semibold opacity-90">{{title}}</h3>
+                    <p class="text-xl line-clamp-4 break-words">{{excerpt}}</p>
+                    <p class="uppercase opacity-80 font-sans text-lg font-bold self-end">{{t "by"}} {{#foreach authors}}{{name}}{{/foreach}} - <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></p>
+                
+            </a>
+            {{/foreach}}
+            {{/get}}
+            <div class="flex flex-col space-y-10 md:min-w-[50%]">
+                {{#get "posts" include="tags,authors" limit="3"}}
+                <div class="flex flex-col space-y-8">
+                    {{#foreach posts}}
+                    <a href="{{url}}"
+                        class="w-full border p-12 !no-underline item-stretch-card">
+                        <h4 class="font-semibold text-3xl truncate mb-4">{{title}}</h4>
+                        <p class="uppercase opacity-80 font-sans text-lg font-bold self-end">{{t "by"}} {{#foreach authors}}{{name}}{{/foreach}} - <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></p>
+                        
+                    </a>
+                    {{/foreach}}
+                </div>
+                {{/get}}
+            </div>
+        </div>
+        <div class="welcome-figures  justify-end">
+            {{#get "tags" limit="all"}}
+            {{#if tags}}
+                <div class="grid-widget-wrapper">
+                    <div class="filter-articles ">
+                        <select class="my_class !bg-transparent border rounded w-4">
+                            <option disabled selected value="{{@site.url}}"></option>
+                            <option value="{{@site.url}}">{{t "All Categories"}}</option>
+                            {{#foreach tags}}
+                            <option value="{{@site.url}}{{url}}">{{name}}</option>
+                            {{/foreach}}
+                        </select>
+                    </div>
+                </div>
+            {{/if}}
+            {{/get}}
+        </div>
+        <div class="it-postfeed home-postfeed it-canvas">
+
+            {{> "loop"}} {{!-- partials/loop.hbs --}}
+        </div>
+        {{pagination}} {{!-- partials/pagination.hbs --}}
+    </div>
+    </div>
+
+
+
+    <script>
+    //custom-select
+    document.querySelector(".my_class").addEventListener("change", function(){
+      var url = this.value
+      if (url) {
+         window.location = url
+      }
+      return false
+    })
+    </script>

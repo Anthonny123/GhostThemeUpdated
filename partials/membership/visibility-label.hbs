@@ -1,0 +1,11 @@
+
+{{^has visibility="public"}}
+	<span class="it-member-label">
+		{{#has visibility="paid"}}
+			{{t "Premium"}}
+		{{/has}}
+		{{#has visibility="members"}}
+			{{t "Members"}}
+		{{/has}}
+	</span>
+{{/has}}

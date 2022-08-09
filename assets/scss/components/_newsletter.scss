@@ -1,0 +1,14 @@
+.newsletter {
+    background: #fff;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: var(--transform);
+    transition: all .2s ease;
+    width: 100%;
+    z-index: 999;
+}

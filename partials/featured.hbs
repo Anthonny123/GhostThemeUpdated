@@ -1,0 +1,9 @@
+{{#get "posts" include="authors,tags" limit="all" filter="featured:true"}}
+{{#if posts}}
+		<span class="featured-icon">{{t "Featured posts" }}</span>
+		{{/if}}
+		<div class="it-featured-post it-grid-c3 featured-slider owl-carousel owl-theme">
+			{{> "loop"}}
+		</div>
+{{/get}}
+	

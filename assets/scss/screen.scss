@@ -1,0 +1,94 @@
+@import './tailwind';
+@import '../css/screen.css';
+
+
+
+@import './cards';
+
+@import './components/newsletter';
+@import './components/owlcarousel';
+@import './screens/featured';
+
+
+
+/* Reset
+/* ---------------------------------------------------------- */
+
+
+li:not([class]) + li:not([class]) {
+    margin-top: .5em;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    line-height: 1.15em;
+    font-weight: 800;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif
+}
+
+h1 {
+    font-size: 4.2rem;
+    letter-spacing: -0.5px;
+}
+@media (max-width: 500px) {
+    h1 {
+        font-size: 2.7rem;
+    }
+}
+
+h2 {
+    font-size: 4rem;
+}
+@media (max-width: 500px) {
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+h3 {
+    font-size: 3.5rem;
+}
+@media (max-width: 500px) {
+    h3 {
+        font-size: 1.8rem;
+    }
+}
+
+h4 {
+    font-size: 2.6rem;
+}
+
+h5 {
+    font-size: 2.4rem;
+}
+
+h6 {
+    font-size: 2.2rem;
+}
+
+.subscribe-form-button {
+    background: var(--color-primary)!important;
+    border: 1px solid transparent;
+    padding: 1rem;
+    color: var(--color-white);
+    cursor: pointer;
+    border-radius: var(--radius);
+    font-weight: var(--font-bold);
+}
+
+
+.user-cover {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    margin: 0 0 30px;
+    background: #fafafa no-repeat 50%;
+    background-size: cover;
+}

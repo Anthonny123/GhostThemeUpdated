@@ -1,0 +1,80 @@
+.post-date-2014+.post-date-2014 .archive-post-label,.post-year-2015+.post-year-2015 .archive-post-label,.post-year-2016+.post-year-2016 .archive-post-label,.post-year-2017+.post-year-2017 .archive-post-label,.post-year-2018+.post-year-2018 .archive-post-label,.post-year-2019+.post-year-2019 .archive-post-label,.post-year-2020+.post-year-2020 .archive-post-label,.post-year-2021+.post-year-2021 .archive-post-label,.post-year-2022+.post-year-2022 .archive-post-label,.post-year-2023+.post-year-2023 .archive-post-label,.post-year-2024+.post-year-2024 .archive-post-label,.post-year-2025+.post-year-2025 .archive-post-label {
+    display: none
+}
+
+.archive__container {
+    text-align: center;
+}
+
+.content-wrap {
+    margin: 0 auto 2em;
+    margin-bottom: var(--gap-lg);
+    max-width: 60rem;
+    max-width: calc(var(--gap-rem)*60)
+}
+
+.archive {
+    text-align: center;
+    counter-reset: postnumber var(--postnumber);
+}
+
+.archive-post__title:before {
+    counter-increment: postnumber -1;
+    content: "#" counter(postnumber) ": ";
+}
+
+.archive-post {
+    background-color: #fff;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid #fff;
+    display: flex;
+    padding: 1.5em 1em;
+    padding: 1.5em var(--gap);
+}
+
+
+
+
+
+.archive-post a:hover {
+    text-decoration: underline!important;
+}
+
+.archive-post__title {
+    color: var(--color-base);
+    font-weight: 500;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.archive-post__link {
+    font-size: 1.2em!important;
+    color: var(--color-base);
+    text-decoration:none!important;
+}
+
+
+
+.archive-post-label {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: var(--gap-sm);
+    margin-top: var(--gap);
+}
+
+
+
+.archive-post time {
+    background-color: #f5f5f5;
+    background-color: var(--color-base);
+    border-radius: var(--global-radius);
+    font-size: .8rem;
+    font-weight: 500;
+    margin: 0 1em 0 0;
+    margin-right: var(--gap);
+    min-width: 6rem;
+    padding: .25em .5em;
+    padding: var(--gap-xs) var(--gap-sm);
+    text-align: center;
+    color: var(--color-bg);
+}

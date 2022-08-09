@@ -1,0 +1,111 @@
+/* Read More
+/* ---------------------------------------------------------- */
+
+.it-readmore {
+    padding: 8vmin 4vw;
+    font-size: 2.6rem;
+}
+
+.it-readmore-inner {
+    display: grid;
+    grid-gap: 8vmin;
+    grid-template-columns: 1fr 1fr;
+}
+
+.it-readmore-prev {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.it-readmore a {
+    display: flex;
+    color: currentColor;
+    text-decoration: none;
+}
+
+.it-readmore h4 {
+    width: 100%;
+    font-size: inherit;
+}
+
+.it-readmore svg {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    margin: 0.15em 0 0;
+}
+
+.it-readmore svg + h4,
+.it-readmore h4 + svg {
+    margin-left: 2vmin;
+}
+
+.it-readmore-inner {
+    display: grid;
+    grid-gap: 8vmin;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 7vmin;
+}
+.it-readmore-media {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 7px;
+}
+    
+.it-readmore-next .it-readmore-media {
+    box-shadow: -5px 5px #f5f6f8;
+    margin-right: 2rem;
+}
+.it-readmore-content {
+    flex: 1;
+    place-self: center;
+}
+.it-readmore-prev .it-readmore-media {
+    margin-left: 2rem;
+    box-shadow: 5px 5px #f5f6f8;
+}
+.it-readmore-media img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+.it-arrow-wrapper {
+    font-size: 1.5rem;
+    margin-bottom: .4rem;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+}
+.it-readmore svg {
+    display: inline-block;
+    vertical-align: middle;
+    height: .8em;
+    margin: 0 0 .5rem 0;
+}
+.it-readmore h4 {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+@media (max-width: 767px) {
+    .it-readmore {
+        font-size: 1.6rem;
+    }
+    .it-readmore svg {
+        margin: 0.1em 0 0;
+    }
+    .it-readmore-inner {
+        padding: 0;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media (max-width:1023px) and (min-width:768px) {
+    .it-readmore-inner {
+        padding: 0;
+    }
+}

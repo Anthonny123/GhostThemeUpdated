@@ -1,0 +1,29 @@
+<footer class="it-foot">
+    <div class="it-container">
+        <div class="it-foot-inner">
+            <div class="it-foot-menu">
+                {{#if @site.secondary_navigation}}
+                    {{navigation type="secondary"}}
+               {{else}}
+                   {{navigation}}
+               {{/if}}
+            </div>
+            
+            <div class="it-foot-social">
+                {{#if @site.facebook}}
+                <a href="{{facebook_url @site.facebook}}" title="{{t "Facebook"}}" target="_blank" rel="noopener" aria-label="{{t "Facebook"}}">{{> "icons/facebook"}}</a>
+                {{/if}}
+                {{#if @site.twitter}}
+                <a href="{{twitter_url @site.twitter}}" title="{{t "Twitter"}}" target="_blank" rel="noopener" aria-label="{{t "Twitter"}}">{{> "icons/twitter"}}</a>
+                {{/if}}
+                <a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="{{t "RSS"}}" target="_blank" rel="noopener" aria-label="{{t "RSS"}}">{{> "icons/rss"}}</a>
+            </div>
+            <div class="it-foot-meta !mb-8">
+                desde el 🌎 con 🧡 por <a href="https://matiasisea.com" title="ir a la web de Matías" target="_blank" rel="noopener">Matías Isea</a>
+            </div>
+            <div class="flex">
+                <p class="text-center md:flex items-center" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://criptonautas.com.ar">Criptonautas</a> by <span property="cc:attributionName">matenauta & senpais</span> is licensed under  <a class="flex justify-center pl-2 items-center" href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" >CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
+            </div>
+        </div>
+    </div>
+</footer>

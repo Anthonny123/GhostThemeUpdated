@@ -1,0 +1,272 @@
+{{!< default}} {{#post}} <article class="it-article {{post_class}} {{#if feature_image}}has-feature-image{{/if}}">
+    <header class="it-header it-canvas">
+        <h1 class="it-title">{{title}}</h1>
+        <div class="it-post-meta">
+            <span class="it-post-by">
+                {{#has author="count:1"}}
+                {{#primary_author}}
+                <a href="{{url}}">{{name}}</a>
+                {{/primary_author}}
+                {{else}}
+                {{#has author="count:2"}}
+                {{#if authors}}
+                {{#foreach authors}}
+                <a href="{{url}}">{{name}}</a>
+                {{#if @first}}
+                {{t "&"}}
+                {{/if}}
+                {{/foreach}}
+                {{/if}}
+                {{else}}
+                {{#has author="count:>2"}}
+                {{#primary_author}}
+                <a href="{{url}}">{{name}}</a>
+                {{/primary_author}}
+                {{t "and others"}}
+                {{/has}}
+                {{/has}}
+                {{/has}}
+            </span>
+            <span class="it-pipe">/</span>
+            <span>
+                <time datetime="{{date timeago=" true"}}">{{date timeago="true"}}</time>
+            </span>
+            <span class="it-pipe">/</span>
+            <span>{{reading_time}}</span>
+        </div>
+        {{#if custom_excerpt}}
+        <p class="it-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+
+        {{#if feature_image}}
+        <figure class="it-feature-image-wrapper">
+            <img class="it-feature-image lazy" data-srcset="{{img_url feature_image size=" s"}} 300w, {{img_url
+                feature_image size="m" }} 600w, {{img_url feature_image size="l" }} 1000w, {{img_url feature_image
+                size="xl" }} 2000w" data-sizes="(max-width: 1000px) 490px, 2000px"
+                data-src="{{img_url feature_image size=" m"}}" alt="{{title}}" />
+        </figure>
+        {{/if}}
+    </header>
+
+    
+    <div class="gh-full-content blog-full-content">
+       
+        
+        <div class="toc-inner m-toc-inner md:!block">
+            <div class="toc-open-container">
+                <button class="toc-open">Table of Content ❯</button>
+            </div>
+            <div class="toc-wrap">
+                <div class="faq-title-inner faq-head">
+                    <div class="faq-qus-title">
+                        <h5>{{t "In this article"}}</h5>
+                         <button class="toc-close">❮</button>
+                    </div>
+                </div>
+                <div class="toc faq-qus-ans"></div>
+            </div>
+        </div>
+        <div class="content-inner">
+            <div class="it-canvas">
+                <div class="it-content social-container">
+                    {{> "social-share"}} {{!-- partials/social-share.hbs --}}
+                </div>
+            </div>
+
+
+            <div class="it-content it-canvas h-content post-content toc-content">
+                {{#if access}}
+                {{content}}
+                {{else}}
+                {{{html}}}
+                {{> "membership/cta"}}
+                {{/if}}
+            </div>
+            {{^is "preview"}}
+            <section class="post-full-comments">
+                <div id='discourse-comments'></div>
+                <script type="text/javascript">
+                    window.DiscourseEmbed = {
+                        discourseUrl: 'https://comunidad.btcarg.com.ar/',
+                        discourseEmbedUrl: `http://btcarg.com.ar{{url}}`,
+                        discourseReferrerPolicy: 'strict-origin-when-cross-origin'
+                    };
+
+
+
+                    (function () {
+                        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+                        d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+                    })();
+                </script>
+            </section>
+            {{/is}}
+            <footer class="it-footer it-canvas">
+                <div class="it-post-info">
+                    <div class="it-post-tags">
+                        {{#foreach tags}}
+                        <a href="{{url}}" title="{{title}}" class="it-button-tag">{{name}}</a>
+                        {{/foreach}}
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div class="right-panel"></div>
+    </div>
+    {{#if @member}}
+    <br>
+    {{else}}
+    <div class="it-subscribe-wide">
+        
+
+        <div class="container mx-auto flex">
+        <div class="flex flex-col m-auto p-8 new-newsletter">
+            <div class="newsletter-container">
+                <h2 class="text-center mb-8 font-sans text-7xl tracking-wide">{{#if @custom.cta_title}}{{@custom.cta_title}}{{else}}{{t "Weekly Newsletter"}}{{/if}}</h2>
+                <p class="tracking-wide text-center mb-8">{{#if @custom.cta_text}}{{@custom.cta_text}}{{else}}{{t "Get into your inbox the most curated info trader
+                & bitcoiner from cryptonauts latinos 👽"}}{{/if}}</p>
+                <form
+                    data-members-form="subscribe"
+                    class="newsletter-container-input"
+                >
+                    <div class="w-full flex flex-col md:flex-row md:justify-center space-y-8 md:space-y-0 container-form-newsletter">
+                        <input
+                            type="email"
+							class="input-newsletter"
+                            placeholder="you@email.com"
+                            aria-label="{{t 'Email'}}"
+                            data-members-email=""
+                        />
+                        <button type="submit" class="button-newsletter text-white hover:opacity-80 font-medium">{{t "Get Info!"}}</button>
+                    </div>
+                    <p>{{t "(it's free and we take care about your data!)" }}</p>
+                    <div class="message-success">{{t "Please check your inbox and click the link to confirm your subscription."}}</div>
+                    <div class="message-error">{{t "An error occurred, please try again later."}}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    
+    {{/if}}
+    </article>
+
+    <aside class="it-readmore">
+        <div class="it-readmore-inner it-container flex justify-between">
+            <div class="it-readmore-prev">
+                {{#prev_post}}
+                <a href="{{url}}">
+                    <div class="it-readmore-content">
+                        <div class="it-arrow-wrapper align-middle">
+                           {{t "❮ Previous Post"}}
+                        </div>
+                        {{#if feature_image}}
+                        <h4>{{title}}</h4>
+                        {{/if}}
+                    </div>
+                    {{#if feature_image}}
+                    <div class="it-readmore-media">
+                        
+                        <img src="{{feature_image}}" alt="{{title}}">
+                        
+                    </div>
+                    {{/if}}
+                </a>
+                {{/prev_post}}
+            </div>
+            <div class="it-readmore-next">
+                {{#next_post}}
+                <a href="{{url}}">
+                    {{#if feature_image}}
+                    <div class="it-readmore-media">
+                        
+                        <img src="{{feature_image}}" alt="{{title}}">
+                        
+                    </div>
+                    {{/if}}
+                    <div class="it-readmore-content">
+                        <div class="it-arrow-wrapper align-middle">
+                            {{t "Next Post ❯"}} 
+                        </div>
+                        {{#if feature_image}}
+                        <h4>{{title}}</h4>
+                        {{/if}}
+                    </div>
+                </a>
+                {{/next_post}}
+            </div>
+        </div>
+    </aside>
+
+    {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3"}}
+    {{#if posts}}
+    <div class="it-readmore">
+        <div class="it-container">
+            <div class="related-posts">
+                <h3>{{t "Read Next"}}</h3>
+            </div>
+            <div class="it-featured-post related-posts-inner it-grid-c3">
+                {{> "loop"}}
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/get}}
+
+    {{/post}}
+
+
+    {{#contentFor "scripts"}}
+    <script>
+        $(document).ready(function () {
+
+            const tocClose = document.querySelector(".toc-close")
+            const tocOpen = document.querySelector(".toc-open-container")
+
+            tocClose.addEventListener("click", openCloseToc)
+            tocOpen.addEventListener("click", openCloseToc)
+
+            tocOpen.style.display = "none"
+
+            function openCloseToc() {
+                const tocWrap = document.querySelector(".toc-wrap");
+                if (tocWrap.style.display === "none") {
+                    tocWrap.style.display = "block";
+                    tocOpen.style.display = "none"
+                } else {
+                    tocWrap.style.display = "none";
+                    tocOpen.style.display = "block"
+                }
+            }
+
+            /* Remuevo las tildes */
+
+            $(".toc-content :header").each(function (i) {
+                this.id = removeAccents(decodeURI(this.id.replace(/={1}/g, '%')));
+            });
+
+            /* END Remuevo las tildes */
+
+            var tocInner =  $(".toc")
+            tocbot.init({
+                tocSelector: '.toc',
+                contentSelector: '.toc-content',
+                headingSelector: 'h1, h2',
+                hasInnerContainers: true,
+                scrollSmooth: true,
+                scrollSmoothDuration: 420,
+            });
+            if (tocInner.children().length < 1) {
+                tocInner.parents(".toc-inner").remove()
+                $(".blog-full-content").addClass("without-toc")
+            }
+
+        })
+
+
+    </script>
+    {{/contentFor}}

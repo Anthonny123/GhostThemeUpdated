@@ -1,0 +1,56 @@
+{{!--
+Re-usable card for linking to posts
+--}}
+{{#foreach posts}}
+    <article class="it-card {{post_class}}">
+            <div class="news-card-content" onclick="window.location='{{url}}';">
+            <a class="it-card-link border-0" title="{{title}}">
+            {{#if feature_image}}
+            <div class="it-card-image-wrapper rounded"><!--Esti era un figure -->
+                <img class="it-card-image lazy"
+                    data-srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w"
+                    data-sizes="(max-width: 1000px) 400px, 700px"
+                    data-src="{{img_url feature_image size="m"}}"
+                    src="#"
+                    alt="{{title}}"
+                />
+            </div>
+            
+            {{/if}}
+            {{#if featured}}
+            	<span class="it-feature-label">
+            		{{> "icons/star"}} {{!-- partials/icons/star.hbs --}}
+            	</span>
+            {{/if}}
+            {{> "membership/visibility-label"}} {{!-- partials/membership/visibility-label.hbs --}}
+            </a>
+            <div class="it-card-content-without-border !bg-transparent rounded-lg">
+            <div class="it-card-meta">
+	            <span class="it-post-card-by">
+					{{t "Published"}} <time datetime="{{date format="YYYY-MM-DD"}}">{{date timeago="true"}}</time>
+				</span> 
+                {{#if tags}}
+				{{t "on"}}
+                {{/if}}
+				{{#foreach tags limit="1"}}
+						<span class="it-post-card-tags">
+							<a href="{{url}}" title="{{title}}">{{name}}</a>
+						</span>
+				{{/foreach}}
+			</div>
+            <div class="news-card-text">
+                <h2 class="it-card-title news-card-title">
+            	<a class="" href="{{url}}">
+                {{title}}
+            	</a>
+            </h2>
+            <p style="text-align: justify;">{{excerpt}}</p>
+            </div>
+            
+        </div>
+        </div>
+    </article>
+{{/foreach}}

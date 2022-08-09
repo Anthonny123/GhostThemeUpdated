@@ -1,0 +1,128 @@
+{
+    "name": "inoletter",
+    "description": "A newsletter theme for ghost",
+    "demo": "https://inoletter.visioun.com",
+    "version": "4.2.0",
+    "engines": {
+        "ghost": ">=4.0.0"
+    },
+    "scripts": {
+        "dev": "gulp",
+        "zip": "gulp zip",
+        "test": "gscan .",
+        "test:ci": "gscan --fatal --verbose .",
+        "pretest": "gulp build",
+        "preship": "yarn test"
+    },
+    "author": {
+        "name": "Visioun.",
+        "email": "hello@visioun.com",
+        "url": "https://visioun.com"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Newsletter"
+        ]
+    },
+    "keywords": [
+        "ghost-theme",
+        "newsletter"
+    ],
+    "devDependencies": {
+        "@tailwindcss/line-clamp": "^0.4.0",
+        "autoprefixer": "10.4.4",
+        "beeper": "2.1.0",
+        "cssnano": "5.1.7",
+        "gscan": "4.27.0",
+        "gulp": "4.0.2",
+        "gulp-livereload": "4.0.2",
+        "gulp-postcss": "9.0.1",
+        "gulp-sass": "^5.1.0",
+        "gulp-sourcemaps": "3.0.0",
+        "gulp-uglify": "3.0.2",
+        "gulp-util": "3.0.8",
+        "gulp-watch": "5.0.1",
+        "gulp-zip": "5.1.0",
+        "postcss": "8.4.12",
+        "postcss-color-mod-function": "3.0.3",
+        "postcss-easy-import": "4.0.0",
+        "sass": "^1.52.3",
+        "tailwindcss": "^3.1.3"
+    },
+    "browserslist": [
+        "defaults"
+    ],
+    "config": {
+        "custom": {
+            "search_api_key": {
+                "type": "text"
+            },
+            "cta_title": {
+                "type": "text",
+                "default": ""
+            },
+            "cta_text": {
+                "type": "text",
+                "default": ""
+            },
+            "donate_title": {
+                "type": "text",
+                "default": "Donate to the BTCARG"
+            },
+            "donate_description": {
+                "type": "text",
+                "default": "By donating to the following Monero address (General Fund), you are supporting the Monero Project. If you wish to donate to a specific proposal, please see Funding Required."
+            },
+            "enable_xmr_donation": {
+                "type": "boolean",
+                "default": true
+            },
+            "enable_btc_donation": {
+                "type": "boolean",
+                "default": true
+            },
+            "xmr_address": {
+                "type": "text",
+                "default": ""
+            },
+            "btc_address": {
+                "type": "text",
+                "default": ""
+            },
+            "btc_address_lightning": {
+                "type": "text",
+                "default": ""
+            }
+        },
+        "posts_per_page": 15,
+        "image_sizes": {
+            "xxs": {
+                "width": 30
+            },
+            "xs": {
+                "width": 100
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 600
+            },
+            "l": {
+                "width": 1200
+            },
+            "xl": {
+                "width": 2000
+            }
+        },
+        "card_assets": false
+    },
+    "dependencies": {
+        "bootstrap-icons": "^1.9.1",
+        "gulp-browserify": "^0.5.1",
+        "gulp-concat": "^2.6.1",
+        "tocbot": "^4.18.2"
+    }
+}

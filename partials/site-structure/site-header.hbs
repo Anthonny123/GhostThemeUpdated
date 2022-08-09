@@ -1,0 +1,72 @@
+<header id="it-head" class=""><!--class="it-head"-->
+    <nav class="navbar-container">
+        <div class="nav-section">
+            <div class="navbar-container-burguer">
+                <h1 style="margin-right: 5vw;">
+                    <a class="it-head-logo" href="{{@site.url}}">
+                        {{#if @site.logo}}
+                          <img src="{{@site.logo}}" alt="{{@site.title}}"/>
+                        {{else}}
+                            {{@site.title}}
+                        {{/if}}
+                    </a>
+                </h1>
+                <a class="it-burger" role="button" aria-label="Burger box" id="burguerMenu" style="width: 50px; height: 50px;">
+                    <svg style="width:100%; height:100%" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg>
+                </a>
+            </div>
+            <div class="it-head-menu">
+                {{navigation}}
+            </div>
+        </div>
+        
+        <div class="it-head-actions">
+            <div class="it-head-actions-list">
+                {{#if @member}}
+                    <button class="it-button it-button-primary it-nav-button" data-portal="account">{{t "Account"}}</button>
+                    <a class="it-button-secondary" href="#signout" data-members-signout>{{t "Sign out"}}</a>
+                {{else}}
+                    <a class="it-button it-button-primary it-nav-button" href="#/portal/signup/">{{t "Subscribe"}}</a>
+                    <a class="it-button it-button-secondary it-nav-button" href="#/portal/signin/">{{t "Signin"}}</a>
+                {{/if}}
+                {{#if @custom.search_api_key}}
+                    <a class="search-link hover:opacity-80" href="#searchinghost-easy" title="{{t "Search"}}" aria-label="{{t "Search"}}">{{> "icons/search"}}</a>
+                {{/if}}
+                <div class="it-dark-light">
+                    <div class="icon-dark">
+                        {{> icons/light}}
+                    </div>
+                    <div class="icon-light">
+                        {{> icons/dark}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar-mobile" id="navbar-mobile">
+        <div class="navbar-mobile-content">
+            <div class="navbar-mobile-navigation-section">
+                {{navigation}}
+            </div>
+            <div class="navbar-mobile-buttons">
+                <div class="navbar-mobile-section-buttton">
+                    <button style="margin: 0;" class="it-button it-button-primary it-nav-button" data-portal="account">{{t "Account"}}</button>
+                    <a class="it-button-secondary" href="#signout" data-members-signout>{{t "Sign out"}}</a>
+                </div>
+                
+            <div class="it-dark-light" id="buttonChangeTheme" style="margin-top: 15px;">
+                    <div class="icon-dark">
+                        {{> icons/light}}
+                    </div>
+                    <div class="icon-light">
+                        {{> icons/dark}}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </nav>
+</header>
+

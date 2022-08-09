@@ -1,0 +1,37 @@
+{{!< default}}
+<div class="container mx-auto flex flex-col space-y-36">
+   <div class="text-center mt-8 mb-12">
+    <h1 class="text-5xl font-semibold">Authors</h1>
+   </div>
+   {{#get 'authors' limit='all' include='count.posts' order='count.posts desc'}}
+   <div class="flex flex-col space-y-36">
+     {{#foreach authors}}
+     <div class="grid grid-cols-2 justify-items-stretch">
+      <div class="m-auto">
+         <img src="{{#if profile_image}} {{profile_image}} {{else}} {{asset "img/default-profile.jpg" }} {{/if}}" alt="{{name}}" class="rounded-full h-60 w-60">
+      </div>
+      <div class="flex flex-col">
+         <a href="{{url}}" class="flex text-5xl  pb-4 text-left !underline-offset-8">{{name}}</a>
+         <span class="break-words my-4">{{bio}}</span>
+         <div class="flex pt-4 space-x-4">
+           
+            {{#if website}}
+                  <a class="h-10 w-10 hover:opacity-80" href="{{website}}" target="_blank" rel="noopener">{{> "icons/link"}}</a>
+            {{/if}}
+            {{#if twitter}}
+                  <a class="h-10 w-10 hover:opacity-80" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+            {{/if}}
+            {{#if facebook}}
+                  <a class="h-10 w-10 hover:opacity-80" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+            {{/if}}
+             {{#if location}}
+                  <a class="h-10 w-10 hover:opacity-80" href="#" target="_blank" rel="noopener">{{> "icons/pin"}}</a>
+                  <p>{{location}}</p>
+            {{/if}}
+         </div>
+      </div>
+     </div>
+     {{/foreach}}
+   </div>
+   {{/get}}
+</div>

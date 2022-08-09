@@ -1,0 +1,118 @@
+/* Variables
+/* ---------------------------------------------------------- */
+
+:root {
+
+    /* Colours */
+    --color-primary: #ed5107;
+    --color-secondary: #ef6b2c;
+    --color-success: #00cd66;
+    --color-danger: #c31717;
+    --color-base: #111;
+    --color-gray: #aaa;
+    --color-border: #f1f1f1;
+    --color-bg: #f1f1f1;
+    --color-bg-white: #fff;
+    --color-bg-grey: #ccc;
+    --color-svg: #111;
+    --border-form-control: #f2f5fb;
+    --color-white:#fff;
+    --color-red: #ca203f;
+    --color-success: #07815c;
+    --bg-icon-mail: #f2f5fb;
+
+    /* Fonts */
+    --font-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-serif: Georgia, Times, serif;
+    --font-mono: Menlo, Courier, monospace;
+    --font-light: 300;
+    --font-normal: 500;
+    --font-bold: 700;
+    --font-heavy: 800;
+
+    /* Breakpoints */
+    --xlarge: 1680px;
+    --large: 1280px;
+    --medium: 980px;
+    --small: 740px;
+    --xsmall: 480px;
+
+    /* Sizes */
+    --height: 4rem;
+    --margin: 2rem;
+    --radius: 0.5rem;
+    
+    /* intro */
+
+    /* gaps */
+    --gap: 1em;
+    --gap-rem: 1rem;
+    --gap-xs: calc(var(--gap)*0.25);
+    --gap-sm: calc(var(--gap)*0.5);
+    --gap-lg: calc(var(--gap)*2);
+    --gap-xl: calc(var(--gap)*4);
+
+    /* radius */
+    --global-radius: 2px;
+    
+}
+
+html[data-theme="dark"] {
+      --color-base: #f1f1f1;
+      --color-bg: #111;
+      --color-bg-white: #111;
+      --color-border: #323232;
+      --color-svg: #f1f1f1;
+      --color-secondary: #ca4800;
+      --border-form-control: #010230;
+      --bg-icon-mail: #1f2e5b;
+    }
+    html[data-theme=dark].it-post-meta {
+        color: var(--color-bg) !important;
+    }
+
+    html[data-theme="dark"] .it-social-share  > a > svg {
+        fill: var(--color-bg);
+    }
+
+html[data-theme="dark"] .it-social-share  > a > svg:hover {
+    outline: solid var(--color-bg) 0.1em;
+}
+
+html[data-theme="dark"] .it-subscribe-content {
+color: var(--color-bg);
+}
+
+html[data-theme="dark"] .subscribe-form-input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+html[data-theme="dark"] .subscribe-form-button {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+}
+
+html[data-theme="dark"] .subscribe-form-button:hover {
+    background: var(--color-secondary) !important;
+}
+
+html[data-theme="dark"] .it-button.it-button-primary {
+    background: var(--color-base) !important;
+    color: var(--color-bg) !important;
+}
+
+    html[data-theme="dark"] .it-button.it-button-primary:hover {
+    color: #f1f1f1 !important;
+    background: #ed5107 !important;
+
+}
+    
+html[data-intro="hide"] {
+    --transform: translate(-120vw);
+    --overflow-y: scroll;
+}
+
+.shadow {
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}

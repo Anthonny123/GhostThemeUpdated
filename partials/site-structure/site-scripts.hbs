@@ -1,0 +1,302 @@
+<script src="{{asset "built/app.min.js"}}"></script>
+{{#if @custom.search_api_key}}
+    <script src="https://cdn.jsdelivr.net/gh/gmfmi/searchinghost-easy@latest/dist/searchinghost-easy-basic.js"></script>
+    <script>
+        new SearchinGhostEasy({
+            contentApiKey: '{{@custom.search_api_key}}',
+            apiUrl: api_url
+        });
+    </script>
+{{/if}}
+<script>
+
+ // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+        var stripe = getParameterByName('stripe');
+        var success = getParameterByName('success');
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+            if (action == 'signup') {
+                window.location = '{{@site.url}}#/portal/signup/?action=checkout';
+            }
+            if (action == 'checkout') {
+                $('body').addClass("signup-success");
+            }
+            // Success === null is here for backwards compatibility, can be removed shortly
+            if (action == 'signin' && (success === null || success === 'true')) {
+                $('body').addClass("signin-success");
+            }
+            if (action == 'signin' && success === 'false') {
+                $('body').addClass("signin-failure");
+            }
+            if (stripe == 'success') {
+                $('body').addClass("checkout-success");
+            }
+            if (stripe == 'billing-update-success') {
+                $('body').addClass("billing-success");
+            }
+            if (stripe == 'billing-update-cancel') {
+                $('body').addClass("billing-cancel");
+            }
+            $('.it-notification-close').click(function () {
+                $(this).parent().addClass('closed');
+                var uri = window.location.toString();
+                if (uri.indexOf("?") > 0) {
+                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                    window.history.replaceState({}, document.title, clean_uri);
+                }
+            });
+        });
+    
+    
+</script>
+
+<script>    
+    $(document).ready(function () {
+        // featured-slider
+        $('.featured-slider').owlCarousel({
+            items: 3,
+            autoplay: false,
+            dots: false,
+            loop: true,
+            margin: 20,
+            nav: true,
+            navText: [
+                `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>`,
+            `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>`,
+            ],
+            responsiveClass: true,
+            autoHeight: false,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                575: {
+                    items: 1,
+                },
+                767: {
+                    items: 2,
+                },
+                1000: {
+                    items: 3,
+                }
+            },
+        })
+
+        
+
+    });
+
+</script>
+
+
+{{!-- Fitvid & kg-gallery --}}
+{{#is "post, page"}}
+    <script>
+    // Kg Gallery
+    var images = document.querySelectorAll('.kg-gallery-image img');
+    images.forEach(function (image) {
+        var container = image.closest('.kg-gallery-image');
+        var width = image.attributes.width.value;
+        var height = image.attributes.height.value;
+        var ratio = width / height;
+        container.style.flex = ratio + ' 1 0%';
+    });
+    
+    // Fit vids
+    $(document).ready(function () {
+        var $postContent = $(".it-content");
+        $postContent.fitVids();
+
+        
+
+    });
+
+    //lightbox
+
+    // Lightbox 
+        const lb = document.querySelectorAll('.kg-image-card img, .kg-gallery-card img');
+        lb.forEach(function (image) {
+        var wrapper = document.createElement('a');
+        wrapper.setAttribute('data-no-swup', '');
+        wrapper.setAttribute('data-fslightbox', '');
+        wrapper.setAttribute('href', image.src);
+        wrapper.setAttribute('aria-label', 'Click for Lightbox');
+        image.parentNode.insertBefore(wrapper, image.parentNode.firstChild);
+        wrapper.appendChild(image);
+        });
+
+        refreshFsLightbox();
+    </script>
+{{/is}}
+
+
+<script>
+
+    window.onresize = function (){
+        const body = document.querySelector('body')
+        const burguerMenuSection = document.getElementById('navbar-mobile')
+        if(document.body.clientWidth > 901 && burguerMenuSection.classList.value ==='navbar-mobile navbar-mobile-open'){
+            burguerMenuSection.classList.remove('navbar-mobile-open')
+        }else{
+            return
+        }
+    }
+
+    //Mobile menu
+    $(document).ready(function () {
+        
+        // Mobile Menu Trigger
+        $('.it-burger').click(function () {
+            const burguerMenuSection = document.getElementById('navbar-mobile')
+            if(burguerMenuSection.classList.value === 'navbar-mobile navbar-mobile-open'){
+                burguerMenuSection.classList.remove('navbar-mobile-open')
+            }else{
+                burguerMenuSection.classList.add('navbar-mobile-open')
+            }
+            //$('body').toggleClass('it-head-open');
+        });
+        
+        //Images Zoom
+        
+        $('.kg-image-card img').attr('data-action', 'zoom');
+        // If the image is inside a link, remove zoom
+        $('.kg-image-card a img').removeAttr('data-action');
+        $('.kg-gallery-image img').attr('data-action', 'zoom');
+        
+            
+
+    });
+    
+    // Load more
+    var pagination_next_url = $('link[rel=next]').attr('href'),
+        $load_posts_button  = $('.it-load-posts');
+
+    $load_posts_button.click(function(e) {
+        e.preventDefault();
+
+        var request_next_link = pagination_next_url.split(/page/)[0] + 'page/' + pagination_next_page_number + '/';
+
+        $.ajax({
+        url: request_next_link,
+        beforeSend: function() {
+            $load_posts_button.text('{{t "Loading"}}');
+            $load_posts_button.addClass('loading');
+        }
+        }).done(function(data) {
+            var posts = $('.post', data);
+
+            $load_posts_button.text('{{t "Load More"}}');
+            $load_posts_button.removeClass('loading');
+
+            $('.it-postfeed').append(posts);
+            var lazyLoadInstance = new LazyLoad({
+                elements_selector: ".lazy",
+            	use_native: true
+            });
+
+            pagination_next_page_number++;
+
+            // If you are on the last pagination page, add the disabled attribute
+            if (pagination_next_page_number > pagination_available_pages_number) {
+                $load_posts_button.attr('disabled', true);
+            }
+        });
+        
+    });
+    
+     //Lazy Load
+    var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy",
+    	use_native: true
+    });
+    lazyLoadInstance.update();
+    
+    
+    // Dark/Light Mode
+    
+    
+    var html = document.querySelector('html'),
+
+    darkLightNavbarMobile = document.getElementById('buttonChangeTheme')
+    darkLightNavbarMobile.addEventListener('click', function(){
+        if(html.getAttribute('data-theme') === 'dark'){
+           html.setAttribute('data-theme', 'light')
+           localStorage.setItem('selected-theme', 'light');
+       }else{
+           html.setAttribute('data-theme', 'dark')
+           localStorage.setItem('selected-theme', 'dark');
+       }
+    })
+
+
+    darkLight = document.querySelector('.it-dark-light')
+    darkLight.addEventListener('click', function(){
+       if(html.getAttribute('data-theme') === 'dark'){
+           html.setAttribute('data-theme', 'light')
+           localStorage.setItem('selected-theme', 'light');
+       }else{
+           html.setAttribute('data-theme', 'dark')
+           localStorage.setItem('selected-theme', 'dark');
+       }
+       console.log(html.hasAttribute('data-theme'))
+    });
+    
+    {{#is "home"}}
+    // Intro Popup
+    const readIssue = document.querySelector('.letme');
+    readIssue.addEventListener('click', function(){
+        console.log('clicked')
+        html.setAttribute('data-intro', 'hide')
+        localStorage.setItem('intro', 'hidden');
+        document.querySelector('.home-template').classList.remove('hidden-overflow');
+        createCookie('intro-added', true, 1)
+        
+       console.log(html.hasAttribute('data-intro'))
+       return false;
+    });
+    
+    if (!readCookie('intro-added')) {
+        localStorage.removeItem("intro");
+    }
+    // And some generic cookie logic
+    function createCookie(name,value,days) {
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(60 * 60 * 1000));
+        var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+    }
+    
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+    
+    function eraseCookie(name) {
+      createCookie(name,"",-1);
+    }
+            
+    {{/is}}
+   
+</script>
