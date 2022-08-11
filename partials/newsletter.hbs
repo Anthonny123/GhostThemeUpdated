@@ -1,55 +1,28 @@
 <div class="h-screen newsletter dark:bg-[#111]">
-    <div class="container mx-auto flex h-screen">
-        <div class="flex flex-col m-auto p-8 new-newsletter">
-            <div class="newsletter-container">
-                <h1
-                    class="text-center mb-8 font-sans text-7xl tracking-wide"
-                >Trading y cripto en tu idioma</h1>
-                <p class="tracking-wide text-center mb-8">
-                    <span class="opacity-80">
-                        Recibe semanalmente data independiente y sin promociones
-                        pagas. Somos lo que hacemos 🙂</span>
-                </p>
-                <form
-                    data-members-form="subscribe"
-                    class="newsletter-container-input"
-                >
-                    <div
-                        class="w-full flex flex-col md:flex-row md:justify-center space-y-8 md:space-y-0 container-form-newsletter"
-                    >
-                        <input
-                            type="email"
-                           
-							class="input-newsletter"
-                            placeholder="you@email.com"
-                            aria-label="{{t '
-						Email'}}"
-                            data-members-email=""
-                        />
-                        <button
-                            type="submit"
-                            
-							class="button-newsletter text-white hover:opacity-80 font-medium"
-                        >{{t "Subscribe"}}</button>
-                    </div>
-                    <div class="message-success">{{t
-                            "Please check your inbox and click the link to confirm your
-					subscription."
-                        }}</div>
-                    <div class="message-error">{{t
-                            "An error occurred, please try again later."
-                        }}</div>
-                </form>
-                <div class="mb-10 text-center opacity-90">
-                    <p>Sumate a <b>5000+</b> criptonautas de todo el mundo!</p>
-                </div>
-                <div class="w-full">
-                    <button
-                        class="letme w-full text-center hover:opacity-80"
-                    >{{t "Let me read it first"}}</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
+	<div class="container mx-auto flex h-screen">
+		<div class="flex flex-col m-auto p-8">
+			<h1 class="text-center mb-8 font-sans text-7xl tracking-wide">Trading y cripto en tu idioma</h1>
+			<p class="tracking-wide text-center mb-8">
+				<span class="opacity-80">
+					Recibe semanalmente data independiente y sin
+					promociones pagas. Somos lo que hacemos 🙂</span>
+			</p>
+			<form data-members-form="subscribe" class="mb-10 mx-16 md:mx-[20%]">
+				<div class="w-full flex flex-col md:flex-row md:justify-center space-y-8 md:space-y-0">
+					<input type="email" class="w-full md:grow rounded-lg border p-4 focus-visible:outline-btcarg-500 md:border-r-0 md:rounded-r-none" placeholder="{{t " Email"}}" aria-label="{{t "
+						Email"}}" data-members-email="">
+					<button type="submit" class="rounded-lg p-4 bg-btcarg-500 text-white hover:opacity-80 font-medium min-w-[20rem] md:rounded-l-none">{{t "Subscribe"}}</button>
+				</div>
+				<div class="message-success">{{t "Please check your inbox and click the link to confirm your
+					subscription."}}</div>
+				<div class="message-error">{{t "An error occurred, please try again later."}}</div>
+			</form>
+			<div class="mb-10 text-center opacity-90">
+				<p>Sumate a <b>5000+</b> criptonautas de todo el mundo!</p>
+			</div>
+			<div class="w-full">
+				<button class="letme w-full text-center hover:opacity-80">{{t "Let me read it first"}}</button>
+			</div>
+		</div>
+	</div>
 </div>
